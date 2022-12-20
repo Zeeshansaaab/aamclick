@@ -163,7 +163,10 @@ class WithdrawController extends Controller
         $pageTitle = "Withdraw Log";
         $withdraws = Withdrawal::where('user_id', auth()->id())->where('status', '!=', 0);
         if ($request->search) {
-            $withdraws = $withdraws->where('trx',$request->search);
+            $withdraws = $withdraws->where('trx', $request->search);
+        }
+        if ($request->type) {
+            $withdraws = $withdraws->where('type', $request->type);
         }
         $withdraws = $withdraws->with('method')->orderBy('id','desc')->paginate(getPaginate());
         return view($this->activeTemplate.'user.withdraw.log', compact('pageTitle','withdraws'));

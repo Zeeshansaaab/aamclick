@@ -270,10 +270,10 @@ class UserController extends Controller
         }
 
         if ($request->remark) {
-            $commissions = $commissions->where('type',$request->remark);
+            $commissions = $commissions->where('type', $request->remark);
         }
         if ($request->level) {
-            $commissions = $commissions->where('level',$request->level);
+            $commissions = $commissions->where('level', $request->level);
         }
 
         $commissions = $commissions->with('userFrom')->paginate(getPaginate());

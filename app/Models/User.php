@@ -105,6 +105,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(CommissionLog::class);
     }
+    public function profitTrackers()
+    {
+        return $this->hasMany(ProfitTracker::class);
+    }
 
 
     public function refBy()

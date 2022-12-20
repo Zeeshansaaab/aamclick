@@ -37,13 +37,13 @@
 
         <div class="c-dashboardInfo col-lg-3 col-md-6">
           <div class="wrap">
-            <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Profit Balance<svg
+            <a href="{{ route('user.profit-balance') }}" class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Profit Balance<svg
                 class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
                 <path fill="none" d="M0 0h24v24H0z"></path>
                 <path
                   d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
                 </path>
-              </svg></h4>
+              </svg></a>
               <span class="hind-font caption-12 c-dashboardInfo__count">{{$general->cur_sym}}{{getAmount(auth()->user()->user_profit_bonus,2)}}</span>
           </div>
         </div>
@@ -94,13 +94,13 @@
         </div>
         <div class="c-dashboardInfo col-lg-3 col-md-6">
             <div class="wrap">
-              <a href="{{ route('user.withdraw.history') }}" class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Profit Withdraw<svg
+              <a href="{{ route('user.withdraw.history') }}?type=user_profit_bonus" class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Profit Withdraw<svg
                   class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
                   <path fill="none" d="M0 0h24v24H0z"></path>
                   <path
                     d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
                   </path>
-                </svg><span class="hind-font caption-12 c-dashboardInfo__count">{{$general->cur_sym}}0</span>
+                </svg><span class="hind-font caption-12 c-dashboardInfo__count">{{$general->cur_sym }} {{ getAmount(auth()->user()->withdrawals()->sum('amount')) }} </span>
               </a>
             </div>
         </div>
@@ -137,7 +137,6 @@
                 <div class="col-lg-4 col-xs-12">
                     <div class="c-dashboardInfo">
                         <div class="wrap">
-                        <a href="{{route('user.members')}}">
                           <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Total Team Members<svg
                               class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
                               <path fill="none" d="M0 0h24v24H0z"></path>
@@ -145,20 +144,19 @@
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
                               </path>
                             </svg></h4>
-                        </a>
                             <span class="hind-font caption-12 c-dashboardInfo__count">{{$teamMembers['total']}}</span>
                         </div>
                     </div>
             
                     <div class="c-dashboardInfo">
                         <div class="wrap">
-                          <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Total Team Members Deposit<svg
+                          <a href="{{ route('user.commissions') }}?remark=deposit_commission" class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Total Team Members Deposit<svg
                               class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
                               <path fill="none" d="M0 0h24v24H0z"></path>
                               <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
                               </path>
-                            </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">{{$general->cur_sym}}{{$teamMembers['balance']}}</span>
+                            </svg></h><span class="hind-font caption-12 c-dashboardInfo__count">{{$general->cur_sym}}{{$teamMembers['balance']}}</span>
                         </div>
                     </div>
                 </div>

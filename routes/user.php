@@ -50,6 +50,12 @@ Route::middleware('auth')->name('user.')->group(function () {
         return view(activeTemplate().'user.members', ['pageTitle' => 'All Team Members', 'members' => $members]);
     })->name('members');
 
+    Route::get('/profit-balance', function () {
+        $profits = auth()->user()->profitTrackers()->with('transaction')->latest()->paginate(getPaginate());
+        return view(activeTemplate() . 'user.profit-balance', ['pageTitle' => 'Profit balance', 'profits' => $profits]);
+    })->name('profit-balance');
+   
+
     Route::middleware(['check.status'])->group(function () {
         Route::get('user-data', 'User\UserController@userData')->name('data');
         Route::post('user-data-submit', 'User\UserController@userDataSubmit')->name('data.submit');

@@ -43,7 +43,7 @@
 
                 <div class="card">
                     <div class="card-body p-0">
-                        <div class="table-responsive--sm">
+                        <div class="table-responsive table-responsive--sm">
                             <table class="table">
                                 <thead class="thead-dark">
                                 <tr>
